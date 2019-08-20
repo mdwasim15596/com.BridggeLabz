@@ -391,23 +391,132 @@ public class Utility {
 		System.out.println("Percentage of game won " + 100.0*wins / trials);
 		System.out.println("Average Bets= "  +  1.0 *bets / trials);
 	}
-public int binary1( int number)
+public int binary1( int dectobinary)
 
-{
-	int temp=0;
-while(number!=0)
-{
-	if(number%2==0)
-	{
-		temp=0+temp;
-	}
-	else	
-	{
-		temp=1+temp;
-	}
-	number=number/2;
-}
-return temp;
-}
+{	
 
+	return ((dectobinary & 0x0F) << 4 | (dectobinary & 0xF0) >> 4); 
+}
+public void Prime(int n) 
+{
+
+	int num;
+	String primeNumbers="";
+       for (int i = 1; i <= n; i++)         
+       { 		  	  
+          int counter=0; 	  
+          for(num =i; num>=1; num--)
+	  {
+             if(i%num==0)
+	     {
+ 		counter = counter + 1;
+	     }
+	  }
+	  if (counter ==2)
+	  {
+	     //Appended the Prime number to the String
+	     primeNumbers = primeNumbers + i + " ";
+	  }	
+       }	
+       System.out.println("Prime numbers from 1 to "+n+" are :");
+       System.out.println(primeNumbers);
+
+}
+public int CalculateFactorial(int number) {
+	int fact=1;
+	for (int i=1;i<=number;i++) {
+		fact*=i;
+	}
+	return fact;
+}
+public void Repeated(int[] arr, int n)
+{
+
+	for(int i=0;i< arr.length-1;i++)
+	{
+		for(int j=i+1;j<arr.length;j++)
+		{
+			if(arr[i]==arr[j])
+			{
+			System.out.println("Repeated = "+arr[j]);		
+		    }
+			
+		}
+	}		
+	
+
+}
+public String[] ReverseStringArray(String[] namesArray, int start, int lengthOfArray) {
+
+	// for reversing the nameArray
+
+	String temp;
+	while (start < lengthOfArray) {
+		temp = namesArray[start];
+		namesArray[start] = namesArray[lengthOfArray];
+		namesArray[lengthOfArray] = temp;
+		start++;
+		lengthOfArray--;
+	}
+	return namesArray;
+}
+public double CalculateAngleX(int x) {
+	
+	return x%(2*180);
+	
+}
+public void PrintSinXSeries(double angleX, int noOddSeries) {
+	
+	int count=1;
+
+	System.out.print("Sin("+angleX+") = ");
+	System.out.print(angleX +" - ");
+	for(int i=3;i<=noOddSeries;) {
+		if(count%2!=0) {
+			System.out.print(Math.pow(angleX, i)+" / "+CalculateFactorial(i));
+			if(i!=noOddSeries) {
+				System.out.print(" + ");
+			}
+			
+			count++;
+			
+		}else {
+			System.out.print(Math.pow(angleX, i)+" / "+CalculateFactorial(i));
+			if(i!=noOddSeries) {
+				System.out.print(" - ");	
+			}
+			count++;
+		}
+		i=i+2;
+		
+	}
+	
+	
+}
+public void PrintCosXSeries(double angleX, int noEvenSeries) {
+	int count=1;
+	
+	System.out.print("Sin("+angleX+") = ");
+	System.out.print( "1 - ");
+	for(int i=2;i<=noEvenSeries;) {
+		if(count%2==0) {
+			System.out.print(Math.pow(angleX, i)+" / "+CalculateFactorial(i));
+			if(i!=noEvenSeries) {
+				System.out.print(" + ");
+			}
+			
+			count++;
+			
+		}else {
+			System.out.print(Math.pow(angleX, i)+" / "+CalculateFactorial(i));
+			if(i!=noEvenSeries) {
+				System.out.print(" - ");	
+			}
+			count++;
+		}
+		i=i+2;
+		
+	}
+	
+}
 }
